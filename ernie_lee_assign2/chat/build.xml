@@ -1,0 +1,87 @@
+
+<project name="assignment_2" default="compile" basedir=".">
+
+  <property name="build.compiler" value="modern"/>
+  <property name="src" value="src"/>
+  <property name="BUILD" value="build"/>
+  <property name="classes" value="${BUILD}/classes"/>
+  <property name="tarballFileName" value="ernie_lee_assign2.tar.gz"/>
+
+  <target name="compile"
+  		depends="assignment_2"/>
+
+  <target name="clean">
+       <delete dir="${BUILD}"/>
+  </target>
+
+
+
+
+  <!-- Prepare target directories -->
+  <target name="prepare">
+        <mkdir dir="${BUILD}"/>
+        <mkdir dir="${classes}"/>
+  </target>
+
+
+  <!-- ** means all subdirectories as well -->
+  <!-- * means all files in the current directory -->
+  <!-- for just java files use *.java -->
+
+  <target name="assignment_2" depends="prepare">
+    <javac srcdir="${src}"
+           includes="assignment_2/**"
+           excludes="**/package.html"
+           destdir="${classes}"
+           classpath="${classes}"
+           debug="on"
+           optimize="on"
+           deprecation="off"/>
+  </target>
+
+
+ <target name="client_jar">
+        <mkdir dir="${BUILD}/jar"/>
+        <jar destfile="${BUILD}/jar/assignment_2_client.jar" basedir="${BUILD}/classes">
+            <manifest>
+                <attribute name="Main-Class" value="client_driver.ClientDriver"/>
+            </manifest>
+        </jar>
+    </target>
+    
+     <target name="server_jar">
+        <mkdir dir="${BUILD}/jar"/>
+        <jar destfile="${BUILD}/jar/assignment_2_server.jar" basedir="${BUILD}/classes">
+            <manifest>
+                <attribute name="Main-Class" value="server_driver.ServerDriver"/>
+            </manifest>
+        </jar>
+    </target>
+
+
+<target name="tar">
+  <tar destfile="./${tarballFileName}"
+       basedir="." compression="gzip"
+       includes="${src}/**, build.xml, README"/>
+</target>
+
+
+<target name="run_client" depends="client_jar">
+        <java jar="${BUILD}/jar/assignment_2_client.jar"  fork="true">
+        <arg value="0.0.0.0"/>
+		<arg value="7167"/>
+		
+	 </java>
+	
+ </target>
+    
+<target name="run_server" depends="server_jar">
+     <java jar="${BUILD}/jar/assignment_2_server.jar"  fork="true">
+		<arg value="7167"/>
+ </java>
+	
+</target>
+
+
+</project>
+

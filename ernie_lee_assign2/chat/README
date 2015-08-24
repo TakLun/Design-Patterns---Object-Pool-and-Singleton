@@ -1,0 +1,182 @@
+CS442 Design PPattern
+Spring 2014
+PROJECT 2 README FILE
+
+Due Date: Thursday, March 13, 2014
+Submission Date: Thursday, March 14, 2014
+Grace Period Used This Project: 1 day
+Grace Period Remaining: 4 Days
+Author: Ernie Lee
+e-mail: elee36@binghamton.edu
+
+PURPOSE:
+
+[
+	The program creates a server and a client. A menu is created 
+	for them to allow communication between the client and the server. 
+	The server is multi-threaded to allow multiple clients to have access to the server.
+	The threads are borrowed from a thread pool and are run by the server to handle clients.
+	The server main thread constantly checks for any incoming clients trying to connect to the server. 
+]
+
+PERCENT COMPLETE:
+
+[
+	I believe I have completed 100% of this project.
+]
+
+PARTS THAT ARE NOT COMPLETE:
+
+[
+	I do not believe there are parts that are not complete.
+]
+
+BUGS:
+
+[
+	None
+]
+
+FILES:
+
+[
+	ClientDriver.java, the main client file associated with the client program also contains main
+	ServerDriver.java, the main server file associated with the server program also contains main
+	Client_Menu.java, The file that contains the client menu that displays the menu and handles input
+	Client.java, The file that runs the client portion of the program. Calls the Client_Menu to handle user input
+	Server_Menu.java, The file that contains the server menu that displays the menu and handles input
+	Server.java, The file that runs the server portion of the program. Calls the Server_Menu to handle user input
+	InvalidInputException.java, the file that handles invalid input
+	MenuDisplay.java, interface that provides the method to display the menu and handle input
+	ThreadPool.java, file that contains the thread pool
+	README, that text file currently being read
+]
+
+SAMPLE OUTPUT:
+
+[
+	ant run_client 
+Buildfile: build.xml
+
+client_jar:
+      [jar] Building jar: /home/ernie/Desktop/CS442/assignment_2/ernie_lee_assign2/chat/build/jar/assignment_2_client.jar
+
+run_client:
+     [java] host: /0.0.0.0
+     [java] listening on port: 37528
+     [java] 
+     [java] 
+     [java] Client Menu
+     [java] 1) Give me a name
+     [java] 2) Send Message to Server
+     [java] 3) Print Message from Server
+     [java] 0) Quit 
+     [java] Option: 
+1
+     [java] Name: 
+ERNIE
+     [java] Client Menu
+     [java] 1) Give me a name
+     [java] 2) Send Message to Server
+     [java] 3) Print Message from Server
+     [java] 0) Quit 
+     [java] Option: 
+2
+     [java] Message: 
+HELLO SERVER
+     [java] Client Menu
+     [java] 1) Give me a name
+     [java] 2) Send Message to Server
+     [java] 3) Print Message from Server
+     [java] 0) Quit 
+     [java] Option: 
+3
+     [java] Server: HELLO CLIENT
+     [java] 
+     [java] Client Menu
+     [java] 1) Give me a name
+     [java] 2) Send Message to Server
+     [java] 3) Print Message from Server
+     [java] 0) Quit 
+     [java] Option:
+0
+     [java] Done
+ 
+BUILD SUCCESSFUL
+Total time: 2 seconds
+
+
+ant run_server 
+Buildfile: build.xml
+
+server_jar:
+      [jar] Building jar: /home/ernie/Desktop/CS442/assignment_2/ernie_lee_assign2/chat/build/jar/assignment_2_server.jar
+
+run_server:
+     [java] listening on port: 7167
+     [java] Address: 0.0.0.0/0.0.0.0
+     [java] Waiting for client to connect...
+     [java] 
+     [java] 
+     [java] Server Menu
+     [java] 1) Send message to client
+     [java] 2) Print Messages from a client
+     [java] 0) Quit 
+     [java] Option: 
+2
+     [java] ERNIE: HELLO SERVER
+     [java]
+     [java] Server Menu
+     [java] 1) Send message to client
+     [java] 2) Print Messages from a client
+     [java] 0) Quit 
+     [java] Option: 
+1
+     [java] Message: 
+HELLO CLIENT
+     [java] Server Menu
+     [java] 1) Send message to client
+     [java] 2) Print Messages from a client
+     [java] 0) Quit 
+     [java] Option: 
+0
+     [java] Done
+
+]
+
+TO COMPILE:
+
+[
+	Compile as: ant compile
+]
+
+TO RUN:
+
+[
+	To run server:
+		Please run as: ant run_server
+	
+	To run client:
+		Please run as: ant run_client
+]
+
+EXTRA CREDIT:
+
+[
+  N/A
+]
+
+
+BIBLIOGRAPHY:
+
+[
+
+	http://tutorials.jenkov.com/java-multithreaded-servers/multithreaded-server.html
+
+	http://docs.oracle.com/javase/tutorial/networking/sockets/clientServer.html
+
+  	http://www.cs.binghamton.edu/~mgovinda/courses/csx42/px.html
+  
+   Freeman, Eric, Elisabeth Robson, Kathy Sierra, and Bert Bates. 
+   Head First Design Patterns. Sebastopol, CA: O'Reilly, 2004. Print.
+]
